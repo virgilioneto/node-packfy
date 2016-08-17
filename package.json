@@ -1,0 +1,19 @@
+{
+  "name": "node-packfy",
+  "version": "0.0.1",
+  "description": "NodeJS file packager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/virgilioneto/node-packfy.git"
+  },
+  "author": "Virgilio Neto <virgilio.missao.neto@gmail.com> (https://github.com/virgilioneto)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/virgilioneto/node-packfy/issues"
+  },
+  "homepage": "https://github.com/virgilioneto/node-packfy#readme"
+}
