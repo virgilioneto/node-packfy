@@ -2,4 +2,7 @@
 node_modules/
 test/
 example/
+coverage/
+out/
+*.zip/
 *.log

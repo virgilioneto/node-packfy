@@ -1,6 +1,7 @@
 .idea/
 node_modules/
 out/
+coverage/
 *.log
 *.zip
 !sample.zip
