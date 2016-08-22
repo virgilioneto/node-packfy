@@ -1,10 +1,11 @@
 {
-  "name": "node-packfy",
+  "name": "packfy",
   "version": "0.0.1",
   "description": "NodeJS file packager",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha ./test"
+    "test": "./node_modules/.bin/mocha ./test",
+    "doc": "node_modules/.bin/jsdoc -t ./node_modules/ink-docstrap/template -R README.md -r ./lib"
   },
   "engines": {
     "node": ">=4.1.0"
@@ -21,6 +22,8 @@
   "homepage": "https://github.com/virgilioneto/node-packfy#readme",
   "devDependencies": {
     "chai": "^3.5.0",
+    "ink-docstrap": "^1.2.1",
+    "jsdoc": "^3.4.0",
     "mocha": "^3.0.2"
   },
   "dependencies": {
