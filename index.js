@@ -1,2 +1,2 @@
 'use strict';
-module.exports.zip = require('./lib/Zip');
+module.exports.Zip = require('./lib/Zip');

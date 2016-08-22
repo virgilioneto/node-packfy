@@ -1,0 +1,2 @@
+# 0.0.1 / 2016-08-22
+* feature: Single zip file compression

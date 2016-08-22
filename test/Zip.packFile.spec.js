@@ -3,7 +3,7 @@ const Path = require('path');
 const chai = require('chai');
 const assert = chai.assert;
 const expect = chai.expect;
-const Zip = require('../lib/Zip');
+const Zip = require('../index').Zip;
 const TestUtil = require('./TestUtil');
 
 chai.should();
