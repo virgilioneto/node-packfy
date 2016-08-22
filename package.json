@@ -1,11 +1,13 @@
 {
   "name": "packfy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "NodeJS file packager",
+  "keywords": ["zip", "compact", "compression", "extraction"],
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha ./test",
-    "doc": "node_modules/.bin/jsdoc -t ./node_modules/ink-docstrap/template -R README.md -r ./lib"
+    "test": "./node_modules/.bin/mocha ./test/*.spec.js",
+    "doc": "node_modules/.bin/jsdoc -t ./node_modules/ink-docstrap/template -R README.md -r ./lib",
+    "coveralls": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "engines": {
     "node": ">=4.1.0"
@@ -22,11 +24,15 @@
   "homepage": "https://github.com/virgilioneto/node-packfy#readme",
   "devDependencies": {
     "chai": "^3.5.0",
+    "coveralls": "^2.11.12",
     "ink-docstrap": "^1.2.1",
+    "istanbul": "^0.4.5",
     "jsdoc": "^3.4.0",
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "mocha-lcov-reporter": "^1.2.0"
   },
   "dependencies": {
+    "async": "^2.0.1",
     "jszip": "latest",
     "moment": "^2.14.1"
   }
