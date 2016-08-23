@@ -15,42 +15,62 @@ describe('Zip#packFiles', () => {
 
     context('Valid operations', () => {
         it('Should accept only "pathList" parameter', (done) => {
-            Zip.packFiles([`${__dirname}/resource/sample.txt`, `${__dirname}/resource/sample.png`])
+            var files = [
+                Path.normalize(`${__dirname}/resource/sample.txt`),
+                Path.normalize(`${__dirname}/resource/sample.png`)
+            ];
+            Zip.packFiles(files)
                 .on('error', (error) => {
                     assert.fail(error, undefined);
                     done();
                 })
                 .on('file', (file) => {
                     file.should.be.a('string');
-                    expect(Path.extname(file)).to.be.equal('.zip');
+                    expect(files.indexOf(file)).to.be.above(-1);
                 })
-                .once('finish', () => {
+                .once('finish', (file) => {
+                    file.should.be.a('string');
+                    expect(Path.extname(file)).to.be.equal('.zip');
                     done();
                 });
         });
 
         it('Should accept "destination"', (done) => {
-            Zip.packFiles([`${__dirname}/resource/sample.txt`, `${__dirname}/resource/sample.png`], {destination: `${__dirname}/resource/tmp`})
+            var files = [
+                Path.normalize(`${__dirname}/resource/sample.txt`),
+                Path.normalize(`${__dirname}/resource/sample.png`)
+            ];
+            Zip.packFiles(files, {destination: `${__dirname}/resource/tmp`})
                 .on('error', (error) => {
                     assert.fail(error, undefined);
                     done();
                 })
                 .on('file', (file) => {
                     file.should.be.a('string');
-                    expect(Path.extname(file)).to.be.equal('.zip');
+                    expect(files.indexOf(file)).to.be.above(-1);
                 })
-                .once('finish', () => {
+                .once('finish', (file) => {
+                    file.should.be.a('string');
+                    expect(Path.extname(file)).to.be.equal('.zip');
                     done();
                 });
         });
 
         it('Should be possible to set "targetName"', (done) => {
-            Zip.packFiles([`${__dirname}/resource/sample.txt`, `${__dirname}/resource/sample.png`], {destination: `${__dirname}/resource/tmp`, targetName: `my-brand-new-zip`})
+            var files = [
+                Path.normalize(`${__dirname}/resource/sample.txt`),
+                Path.normalize(`${__dirname}/resource/sample.png`)
+            ];
+            Zip.packFiles(files, {destination: `${__dirname}/resource/tmp`, targetName: `my-brand-new-zip`})
                 .on('error', (error) => {
                     assert.fail(error, undefined);
                     done();
                 })
                 .on('file', (file) => {
+                    file.should.be.a('string');
+                    expect(files.indexOf(file)).to.be.above(-1);
+                })
+                .once('finish', (file) => {
                     var suffix;
                     file.should.be.a('string');
                     expect(Path.extname(file)).to.be.equal('.zip');
@@ -59,35 +79,47 @@ describe('Zip#packFiles', () => {
                     suffix = suffix[suffix.length - 2];
 
                     expect(Path.basename(file)).to.be.equal(`my-brand-new-zip.${suffix}.zip`);
-                })
-                .once('finish', () => {
                     done();
                 });
         });
 
         it('Should be possible to set "override"', (done) => {
-            Zip.packFiles([`${__dirname}/resource/sample.txt`, `${__dirname}/resource/sample.png`], {destination: `${__dirname}/resource/tmp`, targetName: `my-brand-new-zip`, override: true})
+            var files = [
+                Path.normalize(`${__dirname}/resource/sample.txt`),
+                Path.normalize(`${__dirname}/resource/sample.png`)
+            ];
+            Zip.packFiles(files, {destination: `${__dirname}/resource/tmp`, targetName: `my-brand-new-zip`, override: true})
                 .on('error', (error) => {
                     assert.fail(error, undefined);
                     done();
                 })
                 .on('file', (file) => {
                     file.should.be.a('string');
+                    expect(files.indexOf(file)).to.be.above(-1);
+                })
+                .once('finish', (file) => {
+                    file.should.be.a('string');
                     expect(Path.extname(file)).to.be.equal('.zip');
                     expect(Path.basename(file)).to.be.equal('my-brand-new-zip.zip');
-                })
-                .once('finish', () => {
                     done();
                 });
         });
 
         it('Should be possible to set "suffixMask"', (done) => {
-            Zip.packFiles([`${__dirname}/resource/sample.txt`, `${__dirname}/resource/sample.png`], {destination: `${__dirname}/resource/tmp`, targetName: `my-brand-new-zip`, override: false, suffixMask: 'YYYY'})
+            var files = [
+                Path.normalize(`${__dirname}/resource/sample.txt`),
+                Path.normalize(`${__dirname}/resource/sample.png`)
+            ];
+            Zip.packFiles(files, {destination: `${__dirname}/resource/tmp`, targetName: `my-brand-new-zip`, override: false, suffixMask: 'YYYY'})
                 .on('error', (error) => {
                     assert.fail(error, undefined);
                     done();
                 })
                 .on('file', (file) => {
+                    file.should.be.a('string');
+                    expect(files.indexOf(file)).to.be.above(-1);
+                })
+                .once('finish', (file) => {
                     var suffix;
                     file.should.be.a('string');
                     expect(Path.extname(file)).to.be.equal('.zip');
@@ -96,8 +128,6 @@ describe('Zip#packFiles', () => {
                     suffix = suffix[suffix.length - 2];
 
                     expect(Path.basename(file)).to.be.equal(`my-brand-new-zip.${suffix}.zip`);
-                })
-                .once('finish', () => {
                     done();
                 });
         });
