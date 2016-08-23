@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/virgilioneto/node-packfy/badge.svg?branch=master)](https://coveralls.io/github/virgilioneto/node-packfy?branch=master)
 [![Build Status](https://travis-ci.org/virgilioneto/node-packfy.svg?branch=master)](https://travis-ci.org/virgilioneto/node-packfy)
 
-**This module is under development right now no ready for production**
+**This module is under development right now and not ready for production**
 
 This package was designed to be a multi format lib to compact / extract files and folders.
 
