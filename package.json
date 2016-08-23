@@ -2,7 +2,12 @@
   "name": "packfy",
   "version": "0.0.2",
   "description": "NodeJS file packager",
-  "keywords": ["zip", "compact", "compression", "extraction"],
+  "keywords": [
+    "zip",
+    "compact",
+    "compression",
+    "extraction"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test/*.spec.js",
@@ -34,6 +39,7 @@
   },
   "dependencies": {
     "async": "^2.0.1",
+    "globby": "^6.0.0",
     "jszip": "latest",
     "moment": "^2.14.1"
   }
